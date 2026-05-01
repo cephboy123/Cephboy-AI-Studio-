@@ -1,38 +1,8 @@
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import {
-  getAuth,
-  GoogleAuthProvider,
-  signInWithPopup,
-  signOut
-} from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
-
-// TA CONFIG (inchangée)
 const firebaseConfig = {
-  apiKey: "AIzaSyDUUvq3caSsXbQLoHO7i6MqBymBblJAFZw",
-  authDomain: "cephboy-ai-studio.firebaseapp.com",
-  projectId: "cephboy-ai-studio",
-  storageBucket: "cephboy-ai-studio.firebasestorage.app",
-  messagingSenderId: "652729426664",
-  appId: "1:652729426664:web:01d428d4a6b4752fd5df5d",
-  measurementId: "G-CTKDXVG7BF"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
-
-// INIT
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
-// AUTH GOOGLE
-const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
-
-// FIRESTORE
-const db = getFirestore(app);
-
-// FONCTIONS
-export const loginWithGoogle = () => signInWithPopup(auth, provider);
-export const logout = () => signOut(auth);
-
-// EXPORTS
-export { auth, db };
