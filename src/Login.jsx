@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { auth, loginWithGoogle, logout } from "../firebase";
+import { auth, loginWithGoogle, logout } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
 
 export default function Login() {
